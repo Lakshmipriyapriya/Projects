@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div>
+      <!-- <form name="myForm" #myForm="ngForm" (ngSubmit)="editBook()"> -->
+      <mat-form-field>
+        <input type="number" matInput placeholder = 'ISBN' [(ngModel)]="books.isbn" name='isbn' >
+      </mat-form-field><br>
+      <mat-form-field>
+        <input type="text" matInput placeholder= 'Title' [(ngModel)]= "books.title" name="title">
+      </mat-form-field><br>
+      <mat-form-field>
+        <input type="text" matInput placeholder = "Author" [(ngModel)]= "books.author" name='author' required>
+      </mat-form-field><br>
+      <mat-form-field>
+        <input type="text" matInput placeholder = "Description" [(ngModel)]= "books.description" name='description' required>
+      </mat-form-field><br>
+      <mat-form-field>
+        <input type="text" matInput placeholder = "Publisher" [(ngModel)]= "books.publisher" name='publisher' required>
+
+      </mat-form-field>
+      <!-- </form> -->
+    </div><br>
+
+    <br>
+  </div>
+
+</div>
+<button type="submit" class="btn btn-secondary" (click)= "updateBooks(books)">update</button>
+<button type="button" class='btn' [routerLink]="['/books']">list</button>
+
