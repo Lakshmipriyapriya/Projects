@@ -3,7 +3,7 @@
 </div>
 <mat-card>
     <div>
-<h3 style="color: darkseagreen">Enter your Book details below:</h3>
+      <h3 style="color: darkseagreen">Enter your Book details below:</h3>
       <mat-form-field>
         <input type="number" matInput placeholder = 'ISBN' [(ngModel)]= "postedData.isbn" required="number">
       </mat-form-field><br>
@@ -20,7 +20,7 @@
         <input type="text" matInput placeholder = "Publisher" [(ngModel)]= "postedData.publisher" required>
       </mat-form-field>
       <br>
-  <button mat-stroked-button color='accent'  (click)="postBooks()">Save</button>
+      <button mat-stroked-button color='accent'  (click)="postBooks()">Save</button>
     </div>
   </mat-card>
 

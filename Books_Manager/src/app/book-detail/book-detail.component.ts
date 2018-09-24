@@ -8,10 +8,20 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./book-detail.component.css']
 })
 export class BookDetailComponent implements OnInit {
-  constructor(private router: ActivatedRoute, private  api: ApiService) { }
+  book: any = {};
+  constructor(private router: ActivatedRoute, private  api: ApiService) {
+    // this.id = this.router.params;
+    // console.log('id details: ', this.id);
+   }
 
   ngOnInit() {
 
+  }
+  deleteBook(id) {
+    this.api.deleteBook(id).subscribe(res => {
+      this.book = res;
+      console.log('res is :', res);
+    });
   }
 
 }

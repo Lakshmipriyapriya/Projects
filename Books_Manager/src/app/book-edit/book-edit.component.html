@@ -1,7 +1,11 @@
+<div class="button-row">
+  <a mat-raised-button color="accent" [routerLink]="['/books']"><mat-icon>list</mat-icon></a>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-md-4"></div>
     <div>
+      <mat-card>
       <!-- <form name="myForm" #myForm="ngForm" (ngSubmit)="editBook()"> -->
       <mat-form-field>
         <input type="number" matInput placeholder = 'ISBN' [(ngModel)]="books.isbn" name='isbn' >
@@ -19,6 +23,7 @@
         <input type="text" matInput placeholder = "Publisher" [(ngModel)]= "books.publisher" name='publisher' required>
 
       </mat-form-field>
+    </mat-card>
       <!-- </form> -->
     </div><br>
 
@@ -26,6 +31,11 @@
   </div>
 
 </div>
-<button type="submit" class="btn btn-secondary" (click)= "updateBooks(books)">update</button>
-<button type="button" class='btn' [routerLink]="['/books']">list</button>
+<div class="button-row">
+  <a mat-raised-button color="accent"  (click)= "updateBooks(books)"><mat-icon>update</mat-icon></a>
+</div>
+
+<!-- <button type="submit" class= (click)= "updateBooks(books)">update</button> -->
+<!-- <button type="button" class='btn' [routerLink]="['/books']">list</button> -->
+
 

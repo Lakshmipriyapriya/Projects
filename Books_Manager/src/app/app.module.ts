@@ -9,7 +9,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {ApiService} from './api.service';
-import {ReactiveFormsModule} from '@angular/forms'
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
@@ -18,10 +19,23 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookCreateComponent } from './book-create/book-create.component';
 import { BookEditComponent } from './book-edit/book-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 const bookRoutes: Routes =
  [
+   {
+     path: 'signup',
+     component: SignupComponent,
+   },
+    {
+      path: 'home',
+      component: HomePageComponent,
+    },
     {
       path: 'books',
       component: BookComponent,
@@ -44,12 +58,12 @@ const bookRoutes: Routes =
     },
     {
       path: '',
-      redirectTo: '/books',
+      redirectTo: '/home',
       pathMatch : 'full'
     },
     {
     path: '**',
-    redirectTo: '/books'
+    redirectTo: '/home'
     }
   ];
 @NgModule({
@@ -58,7 +72,10 @@ const bookRoutes: Routes =
     BookComponent,
     BookDetailComponent,
     BookCreateComponent,
-    BookEditComponent
+    BookEditComponent,
+    LoginComponent,
+    SignupComponent,
+    HomePageComponent
   ],
   imports: [
     RouterModule.forRoot(bookRoutes),
@@ -71,7 +88,9 @@ const bookRoutes: Routes =
     MatTableModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatMenuModule,
+    MatIconModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
