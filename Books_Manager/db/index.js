@@ -6,4 +6,4 @@ if(err){
 else{
 	console.log('connected to database');
 }
-})
+});

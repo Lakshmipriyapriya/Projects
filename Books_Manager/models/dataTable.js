@@ -1,11 +1,11 @@
-var mongoose= require ('mongoose');
-var Schema= mongoose.Schema;
-var Books= new Schema({
- isbn:{
- type:Number,
- required:true
-},
-  title:{
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema
+var datatables = new Schema({
+  isbn:{
+    type:Number,
+    required:true
+   },
+   title:{
     type: String,
     requiredTrue :true
   },
@@ -22,9 +22,6 @@ var Books= new Schema({
     required:true
   },
   updated_date:{type: Date,
-   default: Date.now}
+    default: Date.now}
 });
-module.exports=mongoose.model('Books',Books);
-
-
-
+module.exports = mongoose.model('datatables',datatables);
