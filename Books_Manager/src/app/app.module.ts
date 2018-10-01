@@ -12,6 +12,10 @@ import {ApiService} from './api.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
+// import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { BookComponent } from './book/book.component';
@@ -24,13 +28,22 @@ import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { DataTablesComponent } from './data-tables/data-tables.component';
 
 
 const bookRoutes: Routes =
  [
    {
+     path: 'datatables',
+    component: DataTablesComponent
+   },
+   {
      path: 'signup',
      component: SignupComponent,
+   },
+   {
+     path: 'login',
+     component: LoginComponent,
    },
     {
       path: 'home',
@@ -75,7 +88,8 @@ const bookRoutes: Routes =
     BookEditComponent,
     LoginComponent,
     SignupComponent,
-    HomePageComponent
+    HomePageComponent,
+    DataTablesComponent
   ],
   imports: [
     RouterModule.forRoot(bookRoutes),
@@ -90,6 +104,9 @@ const bookRoutes: Routes =
     MatCardModule,
     MatMenuModule,
     MatIconModule,
+    MatCheckboxModule,
+    FlexLayoutModule,
+    // DataTablesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ApiService],

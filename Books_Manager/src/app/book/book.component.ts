@@ -12,7 +12,7 @@ export class BookComponent implements OnInit {
   books: Books[];
  book: (any);
  constructor(private api: ApiService, private router: Router ) { }
- columnsToDisplay = ['isbn', 'title', 'author' , 'description', 'publisher', 'actions'];
+ columnsToDisplay = ['isbn', 'title', 'author' , 'description', 'publisher', 'updated_date', 'actions'];
 
 ngOnInit() {
 this.getListById();
@@ -32,6 +32,10 @@ this.api.deleteBook(id).subscribe((res) => {
   this.getListById();
   // console.log(res);
 });
+}
+logout() {
+  localStorage.clear();
+  this.router.navigate(['/home']);
 }
 
 }

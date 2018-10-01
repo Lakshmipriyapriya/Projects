@@ -1,3 +1,29 @@
-<p>
-  login works!
-</p>
+<mat-card class="matcard" >
+    <div style="background-color:blue">
+    <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2>Home</h2></button>
+
+    <button mat-button [routerLink]="['/signup']" routerLinkActive="router-link-active" > <h2>Signup</h2></button>
+  </div>
+  </mat-card>
+
+<br><br> <div style="text-align: center" layout="row" layout-alaign="center center">
+<div class="loginpage">
+    <h3>LOGIN</h3>
+
+    <mat-form-field>
+    <input type="email" matInput placeholder="Email" [(ngModel)]="UserInfo.email">
+  </mat-form-field><br>
+  <mat-form-field>
+    <input type="password" matInput placeholder="Password" [(ngModel)]="UserInfo.password">
+  </mat-form-field><br>
+  <mat-checkbox>
+      Remember Me!!
+    </mat-checkbox><br><br>
+  <button mat-raised-button color="accent" (click)="loginUser(UserInfo)">
+      LOGIN
+    </button ><br><br>
+
+
+  </div><br>
+</div>
+

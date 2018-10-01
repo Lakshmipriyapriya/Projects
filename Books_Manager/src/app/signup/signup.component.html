@@ -1,20 +1,32 @@
-  <mat-card>
-      <div>
-        <h3 style="color:lightblue">SignUp</h3>
-        <mat-form-field>
-          <input type="text" matInput placeholder = 'UserName' >
+<mat-card class="matcard" >
+  <div style="background-color: aquamarine">
+  <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2>Home</h2></button>
+
+  <button mat-button [routerLink]="['/books']" routerLinkActive="router-link-active" > <h2>Book List</h2></button>
+  <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" ><h2>Log In</h2></button>
+</div>
+</mat-card>
+
+<div style="text-align: center;" class="container">
+
+
+      <form #userForm = 'ngForm' >
+          <h3>SignUp</h3>
+        <mat-form-field class="form-group">
+          <input matInput type="text" name="userName" pattern="[a-zA-Z]*" required placeholder="UserName" [(ngModel)]="usersData.userName" [ngModelOptions]="{standalone: true}" #userName='ngModel' class="form-control" [class.is-invalid]="userName.invalid && userName.touched">
         </mat-form-field><br>
-        <mat-form-field>
-          <input type="text" matInput placeholder= 'E-mail' >
+        <small class="text-danger d-none" *ngIf="userName.invalid && userName.touched" [class.d-none]="userName.valid && userName.untouched">userName is Required</small><br>
+
+        <mat-form-field class="form-group">
+          <input matInput type="email" name="email" pattern="[a-z0-9-.]*@gmail.com" required placeholder="emailId" [(ngModel)]="usersData.email" #email='ngModel' class="form-control" [class.is-invalid]="email.invalid && email.touched">
         </mat-form-field><br>
+
         <mat-form-field>
-          <input type="text" matInput placeholder = 'Password'>
+          <input matInput type="password" name="password" pattern="[a-zA-Z]*[0-9]+" required placeholder="password" [(ngModel)]="usersData.password" #password='ngModel' class="form-control" [class.is-invalid]="password.invalid && password.touched">
         </mat-form-field><br>
-        <mat-form-field>
-          <input type="text" matInput placeholder = 'Conform Password'>
-        </mat-form-field><br>
-        <br>
-        <button mat-stroked-button color='accent' >Save</button>
-      </div>
-    </mat-card>
+
+        <button mat-raised-button  [disabled]="!userForm.valid" (click)="postUserDetails(usersData)">submit</button><br>
+
+      </form>
+    </div>
 

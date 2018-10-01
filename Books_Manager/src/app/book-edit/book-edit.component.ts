@@ -18,11 +18,11 @@ export class BookEditComponent implements OnInit {
 
    }
    updateData = {
-    isbn: this.books.isbn,
-    title: this.books.title,
-    author: this.books.author,
-    description: this.books.description,
-    publisher: this.books.publisher
+    isbn: '',
+    title: '',
+    author: '',
+    description: '',
+    publisher: ''
   };
 
   ngOnInit() {
@@ -30,11 +30,15 @@ export class BookEditComponent implements OnInit {
       this.bookId = params.id;
       console.log('book id from router : ', this.bookId);
     });
+    this.api.getBookById(this.bookId).subscribe(data => {
+      this.books = data;
+    });
   }
 
 updateBooks(updateData) {
   console.log('book edited data : ', updateData);
   this.api.updateBook(this.bookId, updateData).subscribe(data => {
+    updateData = data;
   });
 }
 }

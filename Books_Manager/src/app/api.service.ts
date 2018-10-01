@@ -1,16 +1,15 @@
 
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
- };
+
 @Injectable({
   providedIn : 'root'
 })
 export class ApiService {
    apiUrl = 'http://localhost:3000/book';
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 getBooks() {
   return this.http.get(`${this.apiUrl}`);
@@ -28,6 +27,16 @@ return this.http.put(`${this.apiUrl}/${id}`, data);
 deleteBook(id) {
   return this.http.delete(`${this.apiUrl}/${id}`);
 }
+postData(userData) {
+  const url = `http://localhost:3000/book/signup`;
+  return this.http.post(url, userData);
+}
+
+login(userInfos) {
+  const url = `http://localhost:3000/book/login`;
+  return this.http.post(url, userInfos);
+}
+
 }
 
 

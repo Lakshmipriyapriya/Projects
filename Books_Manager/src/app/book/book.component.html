@@ -1,3 +1,11 @@
+<mat-card class="matcard" >
+    <div style="background-color: aquamarine">
+    <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2>Home</h2></button>
+
+
+    <button mat-button (click)="logout()"><mat-icon>logout</mat-icon></button>
+  </div>
+  </mat-card>
 <h2 style="color:deepskyblue">List Of Your Books</h2>
 <div>
 <mat-card>
@@ -27,6 +35,10 @@
           <th mat-header-cell *matHeaderCellDef><h2>Publisher</h2></th>
           <td mat-cell *matCellDef="let data">{{data.publisher}}</td>
         </ng-container>
+        <ng-container matColumnDef="updated_date">
+            <th mat-header-cell *matHeaderCellDef><h2>Updated-On</h2></th>
+            <td mat-cell *matCellDef="let data">{{data.updated_date}}</td>
+          </ng-container>
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef><h2>  Actions</h2></th>
           <td mat-cell *matCellDef="let data">

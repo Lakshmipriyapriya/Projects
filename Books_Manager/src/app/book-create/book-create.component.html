@@ -2,25 +2,31 @@
   <a mat-raised-button color="accent" [routerLink]="['/books']"><mat-icon>list</mat-icon></a>
 </div>
 <mat-card>
-    <div>
-      <h3 style="color: darkseagreen">Enter your Book details below:</h3>
-      <mat-form-field>
-        <input type="number" matInput placeholder = 'ISBN' [(ngModel)]= "postedData.isbn" required="number">
-      </mat-form-field><br>
-      <mat-form-field>
-        <input type="text" matInput placeholder= 'Title' [(ngModel)]= "postedData.title" required="title">
-      </mat-form-field><br>
-      <mat-form-field>
-        <input type="text" matInput placeholder = "Author" [(ngModel)]= "postedData.author" required>
-      </mat-form-field><br>
-      <mat-form-field>
-        <input type="text" matInput placeholder = "Description" [(ngModel)]= "postedData.description" required>
-      </mat-form-field><br>
-      <mat-form-field>
-        <input type="text" matInput placeholder = "Publisher" [(ngModel)]= "postedData.publisher" required>
-      </mat-form-field>
-      <br>
-      <button mat-stroked-button color='accent'  (click)="postBooks()">Save</button>
-    </div>
+    <h3 style="color: darkseagreen">Enter your Book details below:</h3>
+    <div class="container">
+
+        <form #bookData = 'ngForm' >
+          <mat-form-field class="form-group">
+            <input matInput type="number" name="isbn"  required placeholder="ISBN" [(ngModel)]="postedData.isbn" [ngModelOptions]="{standalone: true}" #isbn='ngModel' class="form-control" [class.is-invalid]="isbn.invalid && isbn.touched">
+          </mat-form-field><br>
+
+
+          <mat-form-field class="form-group">
+            <input matInput type="text" name="title" pattern="[a-zA-Z]*" required placeholder="Title" [(ngModel)]="postedData.title" #title='ngModel' class="form-control" [class.is-invalid]="title.invalid && title.touched">
+          </mat-form-field><br>
+
+          <mat-form-field>
+            <input matInput type="text" name="author" pattern="[a-zA-Z]*" required placeholder="Author" [(ngModel)]="postedData.author" #author='ngModel' class="form-control" [class.is-invalid]="author.invalid && author.touched">
+          </mat-form-field><br>
+
+          <mat-form-field>
+              <input matInput type="text" name="description"  required placeholder="Description" [(ngModel)]="postedData.description" #description='ngModel' class="form-control" [class.is-invalid]="description.invalid && description.touched">
+            </mat-form-field><br>
+            <mat-form-field>
+                <input matInput type="text" name="publisher" pattern="[a-zA-Z0-9]*" required placeholder="Publisher" [(ngModel)]="postedData.publisher" #publisher='ngModel' class="form-control" [class.is-invalid]="publisher.invalid && publisher.touched">
+              </mat-form-field><br>
+          <button mat-raised-button *ngIf="bookData.valid" (click)="postBooks()">submit</button><br>
+        </form>
+      </div>
   </mat-card>
 
