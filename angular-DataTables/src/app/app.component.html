@@ -1,0 +1,23 @@
+<table datatable class="table row-border hover">
+<thead>
+  <tr>
+    <th>ISBN</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Description</th>
+    <th>Publisher</th>
+    <th>Modified Date</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor='let datas of this.data'>
+     <td>{{datas.isbn}}</td>
+     <td>{{datas.title}}</td>
+     <td>{{datas.author}}</td>
+     <td>{{datas.description}}</td>
+     <td>{{datas.publisher}}</td>
+     <td>{{datas. updated_date}}</td>
+  </tr>
+</tbody>
+
+</table>
