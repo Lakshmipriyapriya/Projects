@@ -1,0 +1,54 @@
+<mat-toolbar>
+<button mat-button [matMenuTriggerFor]="mainMenu" style="background-color:blueviolet"><h2>Menu</h2></button><br></mat-toolbar>
+<mat-menu #mainMenu="matMenu" class="span6">
+  <button mat-menu-item [matMenuTriggerFor]="prod">Products & Services</button><br>
+  <button mat-menu-item [matMenuTriggerFor]="support">Support&Downloads</button><br>
+  <button mat-menu-item [matMenuTriggerFor]="training">Training&Events</button><br>
+  <button mat-menu-item [matMenuTriggerFor]="buy">Buy</button><br>
+  <button mat-menu-item [matMenuTriggerFor]="partners">Partners</button>
+</mat-menu>
+<mat-menu #prod="matMenu" fxLayout="row" fxLayoutAlign="space-around center">
+<button mat-menu-item >
+<a href="#"> Products Home ></a>
+</button>
+  <button mat-menu-item [matMenuTriggerFor]="Network"> Networking</button>
+  <button mat-menu-item [matMenuTriggerFor]="mw"> Mobility & Wireless</button>
+  <button mat-menu-item [matMenuTriggerFor]="Security"> Security</button>
+  <button mat-menu-item [matMenuTriggerFor]="Collabration"> Collabration</button>
+  <button mat-menu-item [matMenuTriggerFor]="data"> Data Center</button>
+  <button mat-menu-item [matMenuTriggerFor]="cloud">Cloud</button>
+  <button mat-menu-item [matMenuTriggerFor]="industry">By Industry</button>
+  <button mat-menu-item [matMenuTriggerFor]="company"> By Company Type</button>
+  <button mat-menu-item [matMenuTriggerFor]="ciscoservice">Cisco Service</button>
+</mat-menu>
+<mat-menu #support="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="products">Products & Downloads</button>
+  <button mat-menu-item [matMenuTriggerFor]="ContactSupport">Contact Support</button>
+  <button mat-menu-item [matMenuTriggerFor]="Licenses">Licenses & Contracts</button>
+  <button mat-menu-item [matMenuTriggerFor]="Tools">Tools & Resources</button>
+</mat-menu>
+<mat-menu #training="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="taining">Training</button>
+  <button mat-menu-item [matMenuTriggerFor]="certifications">Certifications</button>
+  <button mat-menu-item [matMenuTriggerFor]="exams">Exams</button>
+  <button mat-menu-item [matMenuTriggerFor]="training">Training by Technology</button>
+  <button mat-menu-item [matMenuTriggerFor]="events">Events & Webinars</button>
+</mat-menu>
+<mat-menu #buy="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="buying">How to Buy</button>
+  <button mat-menu-item [matMenuTriggerFor]="services">Services</button>
+  <button mat-menu-item [matMenuTriggerFor]="products">Remanufactured Products</button>
+  <button mat-menu-item [matMenuTriggerFor]="financing">Financing</button>
+</mat-menu>
+<mat-menu #partners="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="partners">Our Partners </button>
+  <button mat-menu-item [matMenuTriggerFor]="program">Channel Partner Program</button>
+  <button mat-menu-item [matMenuTriggerFor]="certifications">Partner Certifications & Specializations</button>
+  <button mat-menu-item [matMenuTriggerFor]="market">Market & Sell</button>
+  <button mat-menu-item [matMenuTriggerFor]="tools">Partner Tools</button>
+</mat-menu>
+
+
+ <!-- <mat-toolbar>
+<span>MENU</span>
+ </mat-toolbar> -->
