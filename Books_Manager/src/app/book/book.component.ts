@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Books} from '../app.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-book',
@@ -9,9 +10,10 @@ import {Books} from '../app.component';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
+
   books: Books[];
  book: (any);
- constructor(private api: ApiService, private router: Router ) { }
+ constructor(private api: ApiService, private router: Router, private dialogs: MatDialog ) { }
  columnsToDisplay = ['isbn', 'title', 'author' , 'description', 'publisher', 'updated_date', 'actions'];
 
 ngOnInit() {
@@ -33,11 +35,12 @@ this.api.deleteBook(id).subscribe((res) => {
   // console.log(res);
 });
 }
+
 logout() {
   localStorage.clear();
-  this.router.navigate(['/home']);
+  this.router.navigate(['/login']);
+}
 }
 
-}
 
 

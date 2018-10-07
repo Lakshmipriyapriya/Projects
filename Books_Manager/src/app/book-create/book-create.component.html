@@ -1,6 +1,7 @@
 <div class="button-row">
   <a mat-raised-button color="accent" [routerLink]="['/books']"><mat-icon>list</mat-icon></a>
 </div>
+<div style="text-align: center">
 <mat-card>
     <h3 style="color: darkseagreen">Enter your Book details below:</h3>
     <div class="container">
@@ -12,11 +13,11 @@
 
 
           <mat-form-field class="form-group">
-            <input matInput type="text" name="title" pattern="[a-zA-Z]*" required placeholder="Title" [(ngModel)]="postedData.title" #title='ngModel' class="form-control" [class.is-invalid]="title.invalid && title.touched">
+            <input matInput type="text" name="title"  required placeholder="Title" [(ngModel)]="postedData.title" #title='ngModel' class="form-control" [class.is-invalid]="title.invalid && title.touched">
           </mat-form-field><br>
 
           <mat-form-field>
-            <input matInput type="text" name="author" pattern="[a-zA-Z]*" required placeholder="Author" [(ngModel)]="postedData.author" #author='ngModel' class="form-control" [class.is-invalid]="author.invalid && author.touched">
+            <input matInput type="text" name="author"  required placeholder="Author" [(ngModel)]="postedData.author" #author='ngModel' class="form-control" [class.is-invalid]="author.invalid && author.touched">
           </mat-form-field><br>
 
           <mat-form-field>
@@ -25,8 +26,9 @@
             <mat-form-field>
                 <input matInput type="text" name="publisher" pattern="[a-zA-Z0-9]*" required placeholder="Publisher" [(ngModel)]="postedData.publisher" #publisher='ngModel' class="form-control" [class.is-invalid]="publisher.invalid && publisher.touched">
               </mat-form-field><br>
-          <button mat-raised-button *ngIf="bookData.valid" (click)="postBooks()">submit</button><br>
+          <button mat-raised-button style="background-color: deeppink" *ngIf="bookData.valid" (click)="postBooks()">submit</button><br>
         </form>
       </div>
   </mat-card>
+</div>
 

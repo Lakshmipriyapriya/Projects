@@ -29,13 +29,6 @@ export class BookCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-// this.bookCreate = this.fb.group({
-//   title: ['', Validators.required, Validators.pattern('^[a-zA-Z \-\']+')],
-//             author: ['', Validators.pattern('^[a-zA-Z \-\]+')],
-//             description:  ['', Validators.pattern('^[a-zA-Z \-\]+')],
-//             publisher:  ['', Validators.pattern('^[a-zA-Z \-\]+')],
-
-// });
   }
 
 }

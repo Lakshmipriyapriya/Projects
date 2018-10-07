@@ -11,10 +11,17 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent implements OnInit {
+  password: boolean;
 UserInfo = {
 email: '',
 password: ''
 };
+tokenChecking() {
+  if (localStorage.length !== 0 ) {
+  this.router.navigate(['/books']);
+  console.log('navigated to books');
+  }
+}
 loginUser(UserInfo) {
 this.api.login(UserInfo).subscribe((res: any) => {
 this.UserInfo = res;
@@ -27,14 +34,22 @@ console.log('successfull:', UserInfo);
 this.router.navigate(['/books']);
 });
 }
+
+text() {
+this.password = ! this.password;
+}
+
   constructor(private fb: FormBuilder,
     private api: ApiService,
     private router: Router) {
+      this.password = false;
+
 
     }
 
   ngOnInit() {
   }
+
 
 }
 

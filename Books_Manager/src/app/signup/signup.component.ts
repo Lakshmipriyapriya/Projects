@@ -32,6 +32,11 @@ password: ''
 
   ngOnInit() {
   }
+  tokenChecking() {
+    if (localStorage.length !== 0 ) {
+    this.router.navigate(['/books']);
+    console.log('navigated to books');
+    }
 
-
+}
 }

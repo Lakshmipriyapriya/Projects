@@ -82,6 +82,7 @@ router.post('/login',(req,res)=>{
     if (!err) {
       if(user.password!==userData.password){
         return res.send('invalid Password');
+        alert('enter valid password');
       }
       else{
         console.log('successfully loged in')

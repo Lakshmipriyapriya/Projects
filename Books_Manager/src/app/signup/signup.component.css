@@ -6,7 +6,12 @@ body{
 .matcard{
   background-color: deeppink;
 }
-.container{
+
+mat-card{
+  background-color: deeppink;
+}
+
+/* .container{
   align-items: center;
   text-align: center;
   display: flex;
@@ -20,7 +25,7 @@ body{
   /* height: 100vh; */
  /* vertical-align: middle; */
  /* padding-left: 20px; */
-  width: 50rem ;
+  /* width: 50rem ;
   height: 20rem;
   border: 2px solid pink;
-}
+} */

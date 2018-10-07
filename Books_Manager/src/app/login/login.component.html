@@ -1,21 +1,33 @@
-<mat-card class="matcard" >
-    <div style="background-color:blue">
-    <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2>Home</h2></button>
+<mat-card >
+  <div style="background-color: aquamarine" fxLayout="row" fxLayoutAlign="space-around center">
+      <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2 style="color: blue">Home</h2></button>
 
-    <button mat-button [routerLink]="['/signup']" routerLinkActive="router-link-active" > <h2>Signup</h2></button>
-  </div>
-  </mat-card>
+      <button mat-button [routerLink]="['/signup']" routerLinkActive="router-link-active" ><h2 style="color: blue">Signup</h2></button>
 
-<br><br> <div style="text-align: center" layout="row" layout-alaign="center center">
+      <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" ><h2 style="color: blue ">Login</h2></button>
+
+  <button mat-button (click)="tokenChecking()"><h2 style="color: blue">Book List</h2></button>
+  <button mat-button [routerLink]="['/logout']" routerLinkActive="router-link-active" ><h2 style="color: blue ">Log Out</h2></button>
+
+
+  <!-- <button class="btn1" mat-button [routerLink]="['/books']" routerLinkActive="router-link-active" > <h2>Log out</h2></button> -->
+</div>
+</mat-card>
+
+<br><br>
+<div style="text-align: center" fxLayout="column" layout-alaign="center center">
 <div class="loginpage">
-    <h3>LOGIN</h3>
-
+    <h3 style="padding-right: 100px">LOGIN</h3>
     <mat-form-field>
-    <input type="email" matInput placeholder="Email" [(ngModel)]="UserInfo.email">
+    <input style="padding-right: 40px" type="email" matInput placeholder="Email" [(ngModel)]="UserInfo.email">
   </mat-form-field><br>
-  <mat-form-field>
-    <input type="password" matInput placeholder="Password" [(ngModel)]="UserInfo.password">
-  </mat-form-field><br>
+    <mat-form-field>
+
+      <input style="padding-right: 30px" type="password" [type]="password ? 'text':'password'"  matInput placeholder="Password" [(ngModel)]="UserInfo.password">
+    </mat-form-field>
+    <mat-icon (click)="text()">visibility_off</mat-icon>
+  <br>
+
   <mat-checkbox>
       Remember Me!!
     </mat-checkbox><br><br>

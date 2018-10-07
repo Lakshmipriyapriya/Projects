@@ -1,9 +1,16 @@
-<mat-card class="matcard" >
-  <div style="background-color: aquamarine">
-  <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2>Home</h2></button>
+<mat-card >
+  <div style="background-color: aquamarine" fxLayout="row" fxLayoutAlign="space-around center">
+      <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2 style="color: blue">Home</h2></button>
 
-  <button mat-button [routerLink]="['/books']" routerLinkActive="router-link-active" > <h2>Book List</h2></button>
-  <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" ><h2>Log In</h2></button>
+      <button mat-button [routerLink]="['/signup']" routerLinkActive="router-link-active" ><h2 style="color: blue">Signup</h2></button>
+
+      <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" ><h2 style="color: blue ">Login</h2></button>
+
+  <button mat-button (click)="tokenChecking()"><h2 style="color: blue">Book List</h2></button>
+  <button mat-button [routerLink]="['/logout']" routerLinkActive="router-link-active" ><h2 style="color: blue ">Log Out</h2></button>
+
+
+  <!-- <button class="btn1" mat-button [routerLink]="['/books']" routerLinkActive="router-link-active" > <h2>Log out</h2></button> -->
 </div>
 </mat-card>
 
@@ -11,18 +18,18 @@
 
 
       <form #userForm = 'ngForm' >
-          <h3>SignUp</h3>
+          <h3 style="padding-right: 100px">SignUp</h3>
         <mat-form-field class="form-group">
           <input matInput type="text" name="userName" pattern="[a-zA-Z]*" required placeholder="UserName" [(ngModel)]="usersData.userName" [ngModelOptions]="{standalone: true}" #userName='ngModel' class="form-control" [class.is-invalid]="userName.invalid && userName.touched">
         </mat-form-field><br>
         <small class="text-danger d-none" *ngIf="userName.invalid && userName.touched" [class.d-none]="userName.valid && userName.untouched">userName is Required</small><br>
 
         <mat-form-field class="form-group">
-          <input matInput type="email" name="email" pattern="[a-z0-9-.]*@gmail.com" required placeholder="emailId" [(ngModel)]="usersData.email" #email='ngModel' class="form-control" [class.is-invalid]="email.invalid && email.touched">
+          <input matInput type="email" name="email" pattern="[a-z0-9-.]*@gmail.com" required placeholder="Email-Id" [(ngModel)]="usersData.email" #email='ngModel' class="form-control" [class.is-invalid]="email.invalid && email.touched">
         </mat-form-field><br>
 
         <mat-form-field>
-          <input matInput type="password" name="password" pattern="[a-zA-Z]*[0-9]+" required placeholder="password" [(ngModel)]="usersData.password" #password='ngModel' class="form-control" [class.is-invalid]="password.invalid && password.touched">
+          <input matInput type="password" name="password" pattern="[a-zA-Z]*[0-9]+" required placeholder="Password" [(ngModel)]="usersData.password" #password='ngModel' class="form-control" [class.is-invalid]="password.invalid && password.touched">
         </mat-form-field><br>
 
         <button mat-raised-button  [disabled]="!userForm.valid" (click)="postUserDetails(usersData)">submit</button><br>

@@ -14,6 +14,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {ShowHidePasswordModule} from 'ngx-show-hide-password';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialogModule} from '@angular/material/dialog';
 
 // import { DataTablesModule } from 'angular-datatables';
 
@@ -28,15 +31,10 @@ import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { DataTablesComponent } from './data-tables/data-tables.component';
 
 
 const bookRoutes: Routes =
  [
-   {
-     path: 'datatables',
-    component: DataTablesComponent
-   },
    {
      path: 'signup',
      component: SignupComponent,
@@ -89,7 +87,6 @@ const bookRoutes: Routes =
     LoginComponent,
     SignupComponent,
     HomePageComponent,
-    DataTablesComponent
   ],
   imports: [
     RouterModule.forRoot(bookRoutes),
@@ -105,8 +102,10 @@ const bookRoutes: Routes =
     MatMenuModule,
     MatIconModule,
     MatCheckboxModule,
+    MatPaginatorModule,
     FlexLayoutModule,
-    // DataTablesModule,
+    MatDialogModule,
+    ShowHidePasswordModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ApiService],

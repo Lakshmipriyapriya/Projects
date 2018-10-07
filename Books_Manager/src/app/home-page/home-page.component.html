@@ -1,10 +1,14 @@
 <mat-card >
-    <div style="background-color: aquamarine">
-        <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2>Home</h2></button>
-        <button mat-button [routerLink]="['/signup']" routerLinkActive="router-link-active" ><h2>Signup</h2></button>
-        <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" ><h2>Login</h2></button>
+    <div style="background-color: aquamarine" fxLayout="row" fxLayoutAlign="space-around center">
+        <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2 style="color: blue">Home</h2></button>
 
-    <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" ><h2>Book List</h2></button>
+        <button mat-button [routerLink]="['/signup']" routerLinkActive="router-link-active" ><h2 style="color: blue">Signup</h2></button>
+
+        <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" ><h2 style="color: blue ">Login</h2></button>
+
+    <button mat-button (click)="tokenChecking()"><h2 style="color: blue">Book List</h2></button>
+    <button mat-button [routerLink]="['/logout']" routerLinkActive="router-link-active" ><h2 style="color: blue ">Log Out</h2></button>
+
 
     <!-- <button class="btn1" mat-button [routerLink]="['/books']" routerLinkActive="router-link-active" > <h2>Log out</h2></button> -->
   </div>
@@ -12,8 +16,11 @@
   <div style="text-align: center">
   <h2 style="color:darkmagenta">Welcome to Our site !!</h2>
   <p style="color:darkmagenta">Here you can save your Book deatils and edit or delete them based on your needs.<br><br>
-    Please Login to get Book Details!
-   </p><br>
+    Please Login to get Book Details!</p>
+    <h3>Connect with me !!</h3>
+    <div style="padding-left: 800px;" class="g-signin2" data-onsuccess="onSignIn" (click)="signIn()"></div>
+
+   <br>
 
   <img src="../../assets/book.jpg" style="width: 2260px;">
 </div>
