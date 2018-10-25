@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
-
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {BookDetailComponent} from '../book-detail/book-detail.component';
 
 @Component({
   selector: 'app-book-edit',
@@ -14,7 +15,7 @@ export class BookEditComponent implements OnInit {
   books: any = {};
   bookId: any;
   updateBook: FormGroup;
-  constructor(private route: ActivatedRoute, private  api: ApiService, private router: Router, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private  api: ApiService, private router: Router , private mat: MatDialog) {
 
    }
    updateData = {
@@ -37,8 +38,20 @@ export class BookEditComponent implements OnInit {
 
 updateBooks(updateData) {
   console.log('book edited data : ', updateData);
+  const dialogbox = new MatDialogConfig();
+  dialogbox.disableClose = true;
+  dialogbox.autoFocus = true;
+  const dialogdata = this.mat.open(BookDetailComponent, dialogbox);
+  dialogdata.afterClosed().subscribe(info => {
+    if (info != null) {
   this.api.updateBook(this.bookId, updateData).subscribe(data => {
     updateData = data;
   });
+}
+});
+}
+logout() {
+  localStorage.clear();
+  this.router.navigate (['/logout']);
 }
 }

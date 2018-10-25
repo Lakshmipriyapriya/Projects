@@ -36,6 +36,10 @@ login(userInfos) {
   const url = `http://localhost:3000/book/login`;
   return this.http.post(url, userInfos);
 }
+oauthsignup() {
+  const url = `http://localhost:3000/book/oauthentication`;
+  return this.http.get(url);
+}
 
 }
 

@@ -14,9 +14,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {ShowHidePasswordModule} from 'ngx-show-hide-password';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material';
+import {DataTablesModule} from 'angular-datatables';
 
 // import { DataTablesModule } from 'angular-datatables';
 
@@ -31,6 +30,7 @@ import { environment } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 const bookRoutes: Routes =
@@ -87,6 +87,7 @@ const bookRoutes: Routes =
     LoginComponent,
     SignupComponent,
     HomePageComponent,
+    DialogComponent,
   ],
   imports: [
     RouterModule.forRoot(bookRoutes),
@@ -102,14 +103,14 @@ const bookRoutes: Routes =
     MatMenuModule,
     MatIconModule,
     MatCheckboxModule,
-    MatPaginatorModule,
     FlexLayoutModule,
     MatDialogModule,
-    ShowHidePasswordModule,
+    DataTablesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ApiService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent, BookDetailComponent]
 
 })
 export class AppModule { }

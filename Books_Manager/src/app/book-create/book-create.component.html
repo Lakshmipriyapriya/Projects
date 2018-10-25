@@ -1,9 +1,12 @@
-<div class="button-row">
-  <a mat-raised-button color="accent" [routerLink]="['/books']"><mat-icon>list</mat-icon></a>
+<div class="button-row" style="background-color: blue" fxLayout="row" fxLayoutAlign="space-around center">
+  <button mat-button [routerLink]="['/home']"><h2>Home</h2></button>
+  <button mat-button [routerLink]="['/books']"><h2>Book List</h2></button>
+  <button mat-button (click)="logout()"><h2>Log out</h2></button>
 </div>
+
 <div style="text-align: center">
 <mat-card>
-    <h3 style="color: darkseagreen">Enter your Book details below:</h3>
+    <h3 style="color:blue">Enter your Book details below:</h3>
     <div class="container">
 
         <form #bookData = 'ngForm' >

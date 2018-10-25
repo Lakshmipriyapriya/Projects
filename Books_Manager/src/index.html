@@ -1,4 +1,6 @@
+
 <!doctype html>
+
 <html lang="en">
 <head>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -6,16 +8,25 @@
   <meta charset="utf-8">
   <title>BooksManager</title>
   <base href="/">
+  <!-- <link rel="icon" type="image/x-icon" href="./favicon.ico">s -->
   <link rel="manifest" href="./manifest.json">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <meta name="google-signin-client_id" content="777357365347-btigv63563mpt6e9h7qdp5kdvv54idun.apps.googleusercontent.com">
 
-  <!-- <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script> -->
-  <!-- <link rel='stylesheet' type='text/css' href='/resources/tutorial/css/example.css'> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../src/favicon.ico">
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB4_qRXwCrMTYqzyRLdJk75o2qruU4fXyQ",
+    authDomain: "booksmanager-be648.firebaseapp.com",
+    databaseURL: "https://booksmanager-be648.firebaseio.com",
+    projectId: "booksmanager-be648",
+    storageBucket: "booksmanager-be648.appspot.com",
+    messagingSenderId: "777357365347"
+  };
+  firebase.initializeApp(config);
+</script>
+
   <meta name="theme-color" content="#1976d2">
 </head>
 <body>

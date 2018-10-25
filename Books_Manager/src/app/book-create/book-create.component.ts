@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../api.service';
 import {FormBuilder, Validators, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-book-create',
@@ -19,7 +20,7 @@ export class BookCreateComponent implements OnInit {
     description: '',
     publisher: ''
   };
-  constructor(private api: ApiService, private fb: FormBuilder) {
+  constructor(private api: ApiService, private fb: FormBuilder , private router: Router) {
 
    }
    postBooks() {
@@ -29,6 +30,10 @@ export class BookCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/logout']);
   }
 
 }

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {ApiService} from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Books} from '../app.component';
-import {MatDialog} from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import {MatDialog, MatDialogConfig} from '@angular/material';
+import {DialogComponent} from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-book',
@@ -11,17 +13,23 @@ import {MatDialog} from '@angular/material';
 })
 export class BookComponent implements OnInit {
 
+  data: (any);
+  temp: boolean;
   books: Books[];
- book: (any);
- constructor(private api: ApiService, private router: Router, private dialogs: MatDialog ) { }
+  book: (any);
+ constructor(private api: ApiService, private router: Router, private mat: MatDialog) {
+   this.temp = false;
+  }
  columnsToDisplay = ['isbn', 'title', 'author' , 'description', 'publisher', 'updated_date', 'actions'];
 
 ngOnInit() {
 this.getListById();
+
 }
 getListById() {
 this.api.getBooks().subscribe((data: Books[]) => {
 this.books = data;
+this.temp = true;
 console.log(data);
 });
 }
@@ -30,10 +38,18 @@ editBook(id) {
 this.router.navigate([`/edit/${id}`]);
 }
 deleteBook(id) {
-this.api.deleteBook(id).subscribe((res) => {
-  this.getListById();
-  // console.log(res);
-});
+
+const dialogbox = new MatDialogConfig();
+  dialogbox.disableClose = true;
+  dialogbox.autoFocus = true;
+  const dialogdata = this.mat.open(DialogComponent, dialogbox);
+  dialogdata.afterClosed().subscribe(info => {
+    if (info != null) {
+      this.api.deleteBook(id).subscribe((res) => {
+        this.getListById();
+      });
+    }
+  });
 }
 
 logout() {
