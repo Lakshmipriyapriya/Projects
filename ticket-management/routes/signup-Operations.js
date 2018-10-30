@@ -2,17 +2,21 @@ var express = require ('express');
 var router = express.Router();
 var bcrypt= require('bcrypt');
 var jwt=require('jsonwebtoken');
-// var otpgenerator=require('otp-generator');
-// otpGenerator.generate(6, { upperCase: false, specialChars: false });
+var config=require('config');
 var saltRounds=10;
 var signup= require('../models/signup');
-var config=require('../config/configJwt');
 var ticket=require('./ticket-Operations');
 router.post('/',function(req,res,next){
+    var userDetails=req.body
+
       let myOriginalData=req.body;
+      myOriginalData.tenantId = config.tenantId.id;
       let userPassword=myOriginalData.password;
+
       bcrypt.hash(userPassword,saltRounds,function(err,hashedPassword){
       myOriginalData.password=hashedPassword;
+
+      console.log('tenant id is...',myOriginalData.tenantId);
       signup.create(myOriginalData,function(err,data){
             if(err) return next(err);
             res.json(data);
@@ -41,7 +45,7 @@ router.post('/login',function(req,res,next){
           res.send("Sorry!Invalid Account!! " + " Otp to change your password "+sampleotp);
         }
         if(result==true){
-          var token=jwt.sign({email:signup.email},config.secret);
+          var token=jwt.sign({email:signup.email},config.secretKey.secret);
           return res.send({token});
         }
       });

@@ -2,12 +2,12 @@ var express = require('express');
 var router= express.Router();
 var nodemailer=require('nodemailer');
 var ticket=require('../models/ticket');
-var config=require('../config/email');
+var config=require('config');
 var mailer= nodemailer.createTransport({
   service : 'Gmail',
   auth : {
-    user : config.userId ,
-    pass : config.password
+    user :config.mailDetails.userId ,
+    pass : config.mailDetails.password
   }
 });
 var mailOptionsUser={
@@ -101,7 +101,11 @@ router.get('/:id',function(req,res,next){
    });
 })
 router.post('/',function(req,res,next){
-    ticket.create(req.body, function(err,data){
+    var fullDetails=req.body;
+    fullDetails.tenantId = config.tenantId.id;
+    console.log('tenant id is...',fullDetails.tenantId);
+    ticket.create(fullDetails, function(err,data){
+      console.log('details are...',data);
         if(err) return next(err);
           else{
            var sendDetailsToUser= sendMailToUser(data.emailId,data._id,data.userName);

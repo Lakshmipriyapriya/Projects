@@ -5,6 +5,9 @@ var category = new Schema({
     type:Boolean,
     required:true
   },
+  tenantId:{
+    type:String
+  },
    primary:{
     type:String
   },

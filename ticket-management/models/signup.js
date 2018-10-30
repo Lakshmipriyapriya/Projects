@@ -21,6 +21,9 @@ var signupInfo = new Schema({
   password:{
     type:String,
     required : true
+  },
+  tenantId:{
+    type:String
   }
 });
 module.exports=mongoose.model('signupInfo',signupInfo);

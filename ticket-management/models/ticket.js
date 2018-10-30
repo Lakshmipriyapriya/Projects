@@ -5,6 +5,9 @@ var ticket = new Schema({
     type:Number,
     required:true
   },
+  tenantId:{
+    type:String
+  },
   userName:{
     type:String,
     required:true
