@@ -5,15 +5,11 @@ var category = new Schema({
     type:Boolean,
     required:true
   },
-  categoryOwnerName:{
-    type:String,
-    required:true
-  },
-  primary:{
-    type:Boolean
+   primary:{
+    type:String
   },
   secondery:{
-    type:Boolean
+    type:String
   },
   notes:{
     type:String,

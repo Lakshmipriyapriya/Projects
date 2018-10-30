@@ -34,9 +34,15 @@ var ticket = new Schema({
     required:true
   },
   rating:{
-    type:Number,
-    required:true
+    type:Number
   },
+  attachments:{
+    type:Array,
+    title:String,
+    createdBy:String,
+    location:String
+  },
+
   createdOn:{
     type:Date,
     default:Date.now
