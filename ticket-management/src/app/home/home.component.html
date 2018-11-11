@@ -1,0 +1,15 @@
+<div style="background-color:lightskyblue" fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2>Home</h2></button>
+
+    <button mat-button [routerLink]="['/signup']" routerLinkActive="router-link-active" ><h2>Signup</h2></button>
+
+    <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" ><h2>Login</h2></button>
+
+<button mat-button (click)="tokenChecking()"><h2>Ticket Creation</h2></button>
+</div>
+<div style="text-align: center">
+    <h2 style="color:darkmagenta">Welcome to Our site !!</h2>
+    <p style="color:darkmagenta">Here you can post your queries and get them solved<br><br>
+      Please Login to rise your issues!</p>
+
+</div>

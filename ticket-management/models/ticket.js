@@ -1,10 +1,6 @@
 var mongoose=require('mongoose');
 var Schema = mongoose.Schema;
 var ticket = new Schema({
-  referenceId:{
-    type:Number,
-    required:true
-  },
   tenantId:{
     type:String
   },

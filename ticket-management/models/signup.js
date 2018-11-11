@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema
-var signupInfo = new Schema({
+var signupData = new Schema({
   firstName:{
     type : String,
     required : true
@@ -15,7 +15,7 @@ var signupInfo = new Schema({
   },
   email:{
     type: String,
-      unique: true,
+      // unique: true,
       required: true
   },
   password:{
@@ -26,4 +26,4 @@ var signupInfo = new Schema({
     type:String
   }
 });
-module.exports=mongoose.model('signupInfo',signupInfo);
+module.exports=mongoose.model('signupData',signupData);

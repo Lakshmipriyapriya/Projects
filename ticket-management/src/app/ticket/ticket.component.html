@@ -1,0 +1,121 @@
+<div style="background-color:lightskyblue" fxLayout="row" fxLayoutAlign="space-around center">
+  <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2>Home</h2></button>
+
+  <button mat-button [routerLink]="['/category']" routerLinkActive="router-link-active" ><h2>Category</h2></button>
+
+  <button mat-button [routerLink]="['/admin']" routerLinkActive="router-link-active" ><h2>Admin</h2></button>
+
+  <button mat-button (click)="logout()"><h2>Logout</h2></button>
+
+<button mat-button><h2></h2></button>
+</div>
+<!-- <div fxLayout="row" fxLayoutAlign="space-around center"> -->
+  <mat-card>
+<mat-tab-group >
+  <mat-tab label="Send Your Issue">
+    <div style="text-align: center" >
+      <h3 style="color: blue;padding-right: 30%"> Rise Your Issue</h3>
+      <form #userData='ngForm'>
+      <mat-form-field class="form-group">
+          <input style="padding-right: 30px"  matInput type="text" name="userName"  required placeholder="User Name" [(ngModel)]="ticketData.userName" [ngModelOptions]="{standalone: true}" #userName='ngModel' class="form-control" [class.is-invalid]="userName.invalid && userName.touched">
+      </mat-form-field><br>
+
+       <mat-form-field class="form-group">
+          <input matInput type="email" name="email" required  placeholder="E-mail" [(ngModel)]="ticketData.emailId"  [ngModelOptions]="{standalone: true}" #email='ngModel' class="form-control" [class.is-invalid]="email.invalid && email.touched">
+        </mat-form-field><br>
+
+        <mat-form-field class="form-group">
+            <input matInput type="text" name="tickettype" required  placeholder="Ticket Type" [(ngModel)]="ticketData.ticketType"  [ngModelOptions]="{standalone: true}" #tickettype='ngModel' class="form-control" [class.is-invalid]="tickettype.invalid && tickettype.touched">
+        </mat-form-field><br>
+
+        <mat-form-field class="form-group">
+            <input matInput type="text" name="issuetitle" required  placeholder="Issue Title" [(ngModel)]="ticketData.issueTitle"  [ngModelOptions]="{standalone: true}" #issuetitle='ngModel' class="form-control" [class.is-invalid]="issuetitle.invalid && issuetitle.touched">
+        </mat-form-field><br>
+        <label>Attachments:</label>
+        <input type="file"><br><br>
+
+      <mat-form-field class="form-group">
+          <textarea  matInput type="text" name="IssueDescription" required  placeholder="IssueDescription" [(ngModel)]="ticketData.issueDescription"  [ngModelOptions]="{standalone: true}" #IssueDescription='ngModel' class="form-control" [class.is-invalid]="IssueDescription.invalid && IssueDescription.touched">
+            </textarea>
+      </mat-form-field><br>
+        <!-- <label>Issue Description</label>
+      <ck-editor name="IssueDescription" required  [(ngModel)]=" ticketData.issueDescription" ></ck-editor> -->
+
+      <mat-form-field class="form-group" >
+          <mat-select placeholder=" Case Severity" type="text" name="case"  [(ngModel)]="ticketData.caseSeverity" ngDefaultControl [ngModelOptions]="{standalone:true}" #case='ngModel' class="form-control" [class.is-invalid]="case.invalid && case.touched">
+            <mat-option *ngFor="let ticket of tickets" [value]="ticket.value">
+              {{ticket.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field><br><br>
+
+      <button  mat-raised-button color="primary" (click)="ticketCreation(ticketData)">Create</button>
+      <button  mat-raised-button color="accent">Cancle</button>
+    </form>
+    </div>
+  </mat-tab>
+  <!-- <form #userDatas='ngForm'> -->
+  <mat-tab label="Share Your Ideas">
+      <div style="text-align: center">
+      <h3 style="color: blue">Send Your Ideas Any</h3>
+      <ck-editor name="IdeaData" required placeholder="IssueDescription" [(ngModel)]="ideaData.ideas"></ck-editor>
+    <br><br>
+    Attachments:<input type="file"><br><br><br>
+    <button  mat-raised-button color="primary">Send</button>
+    <button  mat-raised-button color="accent">Cancle</button>
+  </div>
+  </mat-tab>
+  <!-- </form> -->
+  <mat-tab label="Send Your Queries">
+    <div style="text-align: center">
+    <h3 style="color: blue">Send Your Queries If Any</h3>
+    <ck-editor name="IssueDescription" required placeholder="IssueDescription" [(ngModel)]=" ticketData.issueDescription"></ck-editor>
+        Attachments:<input type="file"><br><br><br><br>
+    <button  mat-raised-button color="primary">Send</button>
+    <button  mat-raised-button color="accent">Cancle</button>
+  </div>
+  </mat-tab>
+  <mat-tab label="Feedback">
+    <div style="text-align: center">
+      <h3 style="color: blue">Send Your Feedback</h3>
+      <h3>Was this page helpful?</h3>
+      <button mat-raised-button color="primary" (click)="feedback()">Yes</button>
+      <button mat-raised-button color="accent" (click)="feedback()">No</button><br><br>
+    <mat-form-field>
+    <textarea matInput placeholder="Reason for feedback"></textarea>
+  </mat-form-field><br><br>
+  <button  mat-raised-button color="primary">Send</button>
+    <button  mat-raised-button color="accent">Cancle</button>
+
+   </div>
+  </mat-tab>
+  <mat-tab label="My cases">
+    <div style="text-align: center">
+        <h3 style="color: blue">Case List</h3>
+        <table datatable class="table row-border hover" *ngIf="this.temp">
+          <thead>
+            <tr>
+              <th>UserName</th>
+              <th>EmailId</th>
+              <th>Ticket Type</th>
+              <th>Issue Title</th>
+              <th>Issue Description</th>
+              <th>Case Severity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of this.userData">
+              <td>{{data.userName}}</td>
+              <td>{{data.emailId}}</td>
+              <td>{{data.ticketType}}</td>
+              <td>{{data.issueTitle}}</td>
+              <td>{{data.issueDescription}}</td>
+              <td>{{data.caseSeverity}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+</mat-card>
+<!-- </div> -->

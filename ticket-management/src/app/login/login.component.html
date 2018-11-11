@@ -1,0 +1,27 @@
+<div style="background-color:lightskyblue" fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2>Home</h2></button>
+
+    <button mat-button [routerLink]="['/signup']" routerLinkActive="router-link-active" ><h2>Signup</h2></button>
+
+    <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active" ><h2>Login</h2></button>
+
+  <button mat-button (click)="tokenChecking()"><h2>Ticket Creation</h2></button>
+  </div>
+  <div style="text-align: center" fxLayout="column" layout-alaign="center center">
+      <div class="loginpage">
+            <h3 style="padding-right: 100px; color: blue">LOGIN</h3>
+            <mat-form-field class="form-group">
+                <input style="padding-right: 40px" type="email" matInput placeholder="Email" [(ngModel)]="loginData.email">
+            </mat-form-field><br>
+            <mat-form-field class="form-group">
+             <input style="padding-right: 30px" type="password" [type]="password ? 'text':'password'"  matInput placeholder="Password" [(ngModel)]="loginData.password">
+          </mat-form-field><br>
+            <mat-icon *ngIf= "password" (click)="text()" title="password visibility"> visibility</mat-icon>
+            <mat-icon *ngIf="!password" (click)="text()" title="password visibility_off"> visibility_off</mat-icon><br>
+            <mat-icon (click)="text()" title="password">login</mat-icon>
+          <br>
+          <button mat-raised-button color="accent" (click)="loginOperation(loginData)">
+              LOGIN
+         </button ><br><br>
+      </div><br>
+    </div>

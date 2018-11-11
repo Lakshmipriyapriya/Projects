@@ -1,0 +1,63 @@
+<div style="background-color:lightskyblue" fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-button [routerLink]="['/home']" routerLinkActive="router-link-active" > <h2>Home</h2></button>
+
+    <button mat-button [routerLink]="['/ticket']" routerLinkActive="router-link-active" ><h2>Ticket</h2></button>
+
+    <button mat-button [routerLink]="['/admin']" routerLinkActive="router-link-active" ><h2>Admin</h2></button>
+
+    <button mat-button (click)="logout()"><h2>Logout</h2></button>
+
+
+</div>
+
+<mat-card>
+    <mat-tab-group >
+      <mat-tab label="Category-Details creation">
+        <div style="text-align: center" >
+          <h3 style="color: blue"> Rise Your Issue</h3>
+          <form #userData='ngForm'>
+            <mat-form-field class="form-group">
+                <input matInput type="text" name="categoryName"  required placeholder="Category Name">
+            </mat-form-field><br>
+
+            <mat-form-field class="form-group" >
+                <mat-select placeholder=" Your Category" type="text">
+                  <mat-option *ngFor="let category of categoryList" [value]="category.value">
+                    {{category.viewValue}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field><br><br>
+            Images Attachments:<input type="file"><br><br><br>
+            <button  mat-raised-button color="primary">Create</button>
+            <button  mat-raised-button color="accent">Cancle</button>
+          </form>
+        </div>
+      </mat-tab>
+      <mat-tab label="Category-Case Management">
+        <div style="text-align: center">
+            <h3 style="color: blue"> Solution for Issue</h3>
+              <form #userData='ngForm'>
+                <mat-form-field class="form-group">
+                    <mat-select placeholder=" visiblity" type="text">
+                        <mat-option *ngFor="let visible of visiblity" [value]="visible.value">
+                          {{visible.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                </mat-form-field><br>
+                  <mat-form-field class="form-group">
+                      <input matInput type="text" placeholder="Owner Name" required>
+                  </mat-form-field><br>
+                  <mat-form-field class="form-field">
+                        <textarea matInput type="text" placeholder="Notes"></textarea>
+                  </mat-form-field><br><br>
+                  <button mat-raised-button color="accent">Send</button>
+                  <button mat-raised-button color="primary">Cancle</button>
+              </form>
+
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+</mat-card>
+
+
+

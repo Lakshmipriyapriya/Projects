@@ -2,8 +2,8 @@ var mongoose = require ('mongoose');
 var Schema=mongoose.Schema;
 var category = new Schema({
   visiblity:{
-    type:Boolean,
-    required:true
+    type:Boolean
+    // required:true
   },
   tenantId:{
     type:String
@@ -24,7 +24,7 @@ var category = new Schema({
   images:{
     type:Array,
     title:String,
-    createdBy:String,
+    uploadedBy:String,
     location:String
   },
   attachments:{
