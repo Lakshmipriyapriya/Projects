@@ -29,7 +29,7 @@
     "angular-material-fileupload": "^1.0.1",
     "api-benchmark": "^0.5.0",
     "assert": "^1.4.1",
-    "bcrypt": "^3.0.2",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "config": "^2.0.1",
